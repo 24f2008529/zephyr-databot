@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+httpx
+openai
+google-genai
+pandas
+numpy
+requests
+beautifulsoup4
+openpyxl
+python-dotenv

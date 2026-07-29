@@ -1,0 +1,5 @@
+.env
+# or, if you have multiple env files
+.env*
+.env
+.env
