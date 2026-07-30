@@ -12,7 +12,7 @@ from pathlib import Path
 
 import httpx
 from dotenv import load_dotenv
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.responses import FileResponse
 from openai import OpenAI, RateLimitError
 
@@ -392,8 +392,11 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Data-Analyst Telegram Bot", lifespan=lifespan)
 
-@app.get("/health")
-def health_check():
+@app.api_route("/health", methods=["GET", "HEAD"])
+def health_check(request: Request):
+    if request.method == "HEAD":
+        return Response(status_code=200)
+
     return {
         "status": "ok",
         "version": APP_VERSION,
